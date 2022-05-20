@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.theme {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	width: 300px;
+}
+.theme:hover {
+	animation: shake 0.3s linear infinite;
+	cursor: none;
+}
+.move {
+	display: block;
+	margin-right:  auto;
+	margin-left: auto;
+}
+.back {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	bottom: 100px;
+	left: 20px;
+}
+
+.go {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	bottom: 100px;
+	right: 100px;
+}
+.back:hover,
+.go:hover {
+	animation: shake 0.3s linear infinite;
+	cursor: none !important;
+}
+/*カーソル要素*/
+#cursor{
+  position: fixed;
+  /*丸の大きさと色の指定*/
+  background:#FFFFFF;
+  border-radius:15px;
+  width: 15px;
+  height: 15px;
+  margin: -7.5px 0 0 -7.5px;/*真ん中にくるようにマイナスマージンで調整*/
+  z-index: 2;/*一番手前に来るように*/
+  pointer-events: none;/*クリックできなくなるのを防ぐため。noneで対応*/
+  opacity: 1;
+  transition: transform 0.1s;/*アニメーションの秒数指定*/
+}
+/*ちょっと遅れてついてくるストーカー要素*/
+#stalker{
+  position: fixed;
+  /*丸の大きさと色の指定*/
+  background:#000F1B;
+  width: 30px;
+  height: 30px;
+  border-radius:30px;
+  margin: -15px 0 0 -15px;/*真ん中にくるようにマイナスマージンで調整*/
+  z-index: 1;/*カーソルの後ろに来るように*/
+  pointer-events: none;/*クリックできなくなるのを防ぐため。noneで対応*/
+  opacity: 1;
+  transition: transform 0.5s;/*アニメーションの秒数指定*/
+}
+
+#cursor.active,
+#stalker.active{
+  transform: scale(1.7);
+}
+
+@keyframes shake
+{
+  0% {transform: translate(0px, 0px) rotateZ(0deg)}
+    25% {transform: translate(2px, 2px) rotateZ(1deg)}
+    50% {transform: translate(0px, 2px) rotateZ(0deg)}
+    75% {transform: translate(2px, 0px) rotateZ(-1deg)}
+    100% {transform: translate(0px, 0px) rotateZ(0deg)}
+ 
+  }
+body {
+  cursor: none !important ; /*もともとあるカーソルは非表示に*/
+}
